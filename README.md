@@ -44,7 +44,7 @@ Empirical experiments conducted on the LoCoMo long-term conversational dataset a
 1. Clone the repository:
 ```bash
 git clone https://github.com/liuzongquan/CGLM-MR.git
-cd AgenticMemory
+cd CGLM-MR
 ```
 
 2. Install dependencies:

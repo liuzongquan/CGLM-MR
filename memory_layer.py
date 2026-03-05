@@ -28,7 +28,7 @@ class BaseLLMController(ABC):
         pass
 
 class OpenAIController(BaseLLMController):
-    def __init__(self, model: str = "gpt-4", api_key: Optional[str] = None):
+    def __init__(self, model: str = "gpt-4", api_key: Optional[str] = None, base_url:str = None):
         try:
             from openai import OpenAI
             self.model = model
@@ -37,6 +37,8 @@ class OpenAIController(BaseLLMController):
             if api_key is None:
                 raise ValueError("OpenAI API key not found. Set OPENAI_API_KEY environment variable.")
             self.client = OpenAI(api_key=api_key)
+            if base_url:
+                self.client = OpenAI(api_key=api_key, base_url=base_url)
         except ImportError:
             raise ImportError("OpenAI package not found. Install it with: pip install openai")
     

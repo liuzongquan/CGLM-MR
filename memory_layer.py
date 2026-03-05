@@ -245,7 +245,7 @@ class LLMController:
                  sglang_host: str = "http://localhost",
                  sglang_port: int = 30000):
         if backend == "openai":
-            self.llm = OpenAIController(model, api_key)
+            self.llm = OpenAIController(model, api_key, api_base)
         elif backend == "ollama":
             # Use LiteLLM to control Ollama with JSON output
             ollama_model = f"ollama/{model}" if not model.startswith("ollama/") else model

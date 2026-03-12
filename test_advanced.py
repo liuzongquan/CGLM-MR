@@ -1,6 +1,6 @@
 from memory_layer import LLMController, AgenticMemorySystem
 import os
-import json
+import json_repair as json
 import argparse
 import logging
 from typing import List, Dict, Optional, Union

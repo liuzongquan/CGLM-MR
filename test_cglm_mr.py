@@ -1,6 +1,6 @@
 from cglm_mr_layer import CGLMMRSystem, LLMController
 import os
-import json
+import json_repair as json
 import argparse
 import logging
 from typing import List, Dict, Optional, Union

@@ -233,8 +233,7 @@ def evaluate_dataset(dataset_path: str, model: str, output_path: Optional[str] =
             agent.memory_system.retriever.save(retriever_cache_file, retriever_cache_embeddings_file)
             logger.info(f"Successfully constructed and cached {len(agent.memory_system.memories)} Cognitive Graph nodes")
             
-        logger.info(f"
-Processing sample {sample_idx + 1}/{len(samples)}")
+        logger.info(f"Processing sample {sample_idx + 1}/{len(samples)}")
         
         for qa in sample.qa:
             if int(qa.category) in allow_categories:
@@ -249,8 +248,7 @@ Processing sample {sample_idx + 1}/{len(samples)}")
                     logger.info(f"Failed to parse prediction as JSON: {prediction}")
                     error_num += 1
                 
-                logger.info(f"
-Question {total_questions}: {qa.question}")
+                logger.info(f"Question {total_questions}: {qa.question}")
                 logger.info(f"Prediction: {prediction}")
                 logger.info(f"Reference: {qa.final_answer}")
                 logger.info(f"Category: {qa.category}")
@@ -297,19 +295,15 @@ Question {total_questions}: {qa.question}")
             json.dump(final_results, f, indent=2)
         logger.info(f"Results saved to {output_path}")
     
-    logger.info("
-Evaluation Summary:")
+    logger.info("Evaluation Summary:")
     logger.info(f"Total questions evaluated: {total_questions}")
-    logger.info("
-Category Distribution:")
+    logger.info("Category Distribution:")
     for category, count in sorted(category_counts.items()):
         logger.info(f"Category {category}: {count} questions ({count/total_questions*100:.1f}%)")
     
-    logger.info("
-Aggregate Metrics:")
+    logger.info("Aggregate Metrics:")
     for split_name, metrics in aggregate_results.items():
-        logger.info(f"
-{split_name.replace('_', ' ').title()}:")
+        logger.info(f"{split_name.replace('_', ' ').title()}:")
         for metric_name, stats in metrics.items():
             logger.info(f"  {metric_name}:")
             for stat_name, value in stats.items():

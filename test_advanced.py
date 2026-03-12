@@ -23,9 +23,11 @@ from datetime import datetime
 # Download required NLTK data
 try:
     nltk.data.find('tokenizers/punkt')
+    nltk.data.find('tokenizers/punkt_tab')
     nltk.data.find('wordnet')
 except LookupError:
     nltk.download('punkt')
+    nltk.download('punkt_tab')
     nltk.download('wordnet')
 
 # Initialize SentenceTransformer model (this will be reused)

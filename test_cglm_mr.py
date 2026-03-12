@@ -21,10 +21,12 @@ from utils import calculate_metrics, aggregate_metrics
 # Download required NLTK data
 try:
     nltk.data.find('tokenizers/punkt')
+    nltk.data.find('tokenizers/punkt_tab')
     nltk.data.find('wordnet')
 except LookupError:
-    nltk.download('punkt', quiet=True)
-    nltk.download('wordnet', quiet=True)
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
+    nltk.download('wordnet')
 
 class CGLMMRAgent:
     def __init__(self, model, backend, retrieve_k, temperature_c5, sglang_host="http://localhost", sglang_port=30000):

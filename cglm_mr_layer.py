@@ -182,8 +182,7 @@ class CGLMMRSystem:
         """Causal Hypothesis Generation and Intervention Verification"""
         if not related_nodes: return
         
-        candidates_text = "
-".join([f"ID: {n.id} | Content: {n.content} | Time: {n.timestamp}" for n in related_nodes])
+        candidates_text = "".join([f"ID: {n.id} | Content: {n.content} | Time: {n.timestamp}" for n in related_nodes])
         prompt = f"""Current Event:
 Content: {node.content}
 Atomic Facts: {node.atomic_facts}
@@ -301,8 +300,7 @@ Format as JSON strictly:
             n.last_activated_time = self.time_step
             n.utility_score += 0.1 
             
-        system1_context = "
-".join([f"Time: {n.timestamp} | Content: {n.content}" for n in system1_nodes])
+        system1_context = "".join([f"Time: {n.timestamp} | Content: {n.content}" for n in system1_nodes])
         
         # Meta-reasoning: Stability Monitoring (Check for Logical Conflicts/Contradictions)
         prompt = f"""Query: {query}
@@ -360,8 +358,7 @@ Format as JSON strictly:
         system2_nodes = list(system2_nodes_set.values())
         system2_nodes.sort(key=lambda x: x.timestamp) # Sequence temporally
         
-        system2_context = "
-".join([
+        system2_context = "".join([
             f"Time: {n.timestamp} | Content: {n.content} | Context: {n.context} | Causal Logic (OTAR): {n.otar.get('Thought', '')}" 
             for n in system2_nodes
         ])

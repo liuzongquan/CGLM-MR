@@ -335,7 +335,7 @@ def evaluate_dataset(dataset_path: str, model: str, output_path: Optional[str] =
                 logger.info(f"\nQuestion {total_questions}: {qa.question}")
                 logger.info(f"Prediction: {prediction}")
                 logger.info(f"Reference: {qa.final_answer}")
-                logger.info(f"User Prompt: {user_prompt}")
+                # logger.info(f"User Prompt: {user_prompt}")
                 logger.info(f"Category: {qa.category}")
                 # logger.info(f"Raw Context: {raw_context}")
                 

@@ -337,7 +337,7 @@ def evaluate_dataset(dataset_path: str, model: str, output_path: Optional[str] =
                 logger.info(f"Reference: {qa.final_answer}")
                 logger.info(f"User Prompt: {user_prompt}")
                 logger.info(f"Category: {qa.category}")
-                logger.info(f"Raw Context: {raw_context}")
+                # logger.info(f"Raw Context: {raw_context}")
                 
                 # Calculate metrics
                 metrics = calculate_metrics(prediction, qa.final_answer) if qa.final_answer else {

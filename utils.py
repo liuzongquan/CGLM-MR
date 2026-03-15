@@ -209,3 +209,23 @@ def aggregate_metrics(all_metrics: List[Dict[str, float]], all_categories: List[
                 }
     
     return results
+
+
+
+
+
+def extract_first_integer(text):
+    """
+    从字符串中提取第一次出现的连续整数
+
+    Args:
+        text: 输入的字符串
+
+    Returns:
+        第一次出现的连续整数的字符串表示，如果没有找到则返回None
+    """
+    pattern = r'\d+'
+    match = re.search(pattern, text)
+    if match:
+        return match.group(0)
+    return None

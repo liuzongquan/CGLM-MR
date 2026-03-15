@@ -17,6 +17,7 @@ from litellm import completion
 import requests
 import json as json_lib
 import time
+from utils import extract_first_integer
 
 def simple_tokenize(text):
     return word_tokenize(text)
@@ -893,12 +894,11 @@ class AgenticMemorySystem:
             memory_str +=  "talk start time:" + all_memories[i].timestamp + "memory content: " + all_memories[i].content + "memory context: " + all_memories[i].context + "memory keywords: " + str(all_memories[i].keywords) + "memory tags: " + str(all_memories[i].tags) + "\n"
             neighborhood = all_memories[i].links
             for neighbor in neighborhood:
-                if isinstance(neighbor, str):
-                    neighbor = int(neighbor.strip())
-                memory_str += "talk start time:" + all_memories[neighbor].timestamp + "memory content: " + all_memories[neighbor].content + "memory context: " + all_memories[neighbor].context + "memory keywords: " + str(all_memories[neighbor].keywords) + "memory tags: " + str(all_memories[neighbor].tags) + "\n"
-                if j >=k:
-                    break
-                j += 1
+                if neighbor:=extract_first_integer(neighbor):
+                    memory_str += "talk start time:" + all_memories[neighbor].timestamp + "memory content: " + all_memories[neighbor].content + "memory context: " + all_memories[neighbor].context + "memory keywords: " + str(all_memories[neighbor].keywords) + "memory tags: " + str(all_memories[neighbor].tags) + "\n"
+                    if j >=k:
+                        break
+                    j += 1
         return memory_str
 
 def run_tests():

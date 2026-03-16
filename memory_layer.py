@@ -895,6 +895,7 @@ class AgenticMemorySystem:
             neighborhood = all_memories[i].links
             for neighbor in neighborhood:
                 if neighbor:=extract_first_integer(neighbor):
+                    neighbor = int(neighbor)
                     memory_str += "talk start time:" + all_memories[neighbor].timestamp + "memory content: " + all_memories[neighbor].content + "memory context: " + all_memories[neighbor].context + "memory keywords: " + str(all_memories[neighbor].keywords) + "memory tags: " + str(all_memories[neighbor].tags) + "\n"
                     if j >=k:
                         break

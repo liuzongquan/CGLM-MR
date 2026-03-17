@@ -1,6 +1,7 @@
 from memory_layer import LLMController, AgenticMemorySystem
 import os
-import json_repair as json
+import json_repair
+import json
 import argparse
 import logging
 from typing import List, Dict, Optional, Union
@@ -121,7 +122,7 @@ class advancedMemAgent:
                         }})
         print("response:{}".format(response))
         try:
-            response = json.loads(response)["keywords"]
+            response = json_repair.loads(response)["keywords"]
         except:
             response = response.strip()
         return response
@@ -326,7 +327,7 @@ def evaluate_dataset(dataset_path: str, model: str, output_path: Optional[str] =
                 # Generate prediction
                 prediction, user_prompt,raw_context = agent.answer_question(qa.question,qa.category,qa.final_answer)
                 try:
-                    prediction = json.loads(prediction)["answer"]
+                    prediction = json_repair.loads(prediction)["answer"]
                 except:
                     prediction = prediction
                     logger.info(f"Failed to parse prediction as JSON: {prediction}")
